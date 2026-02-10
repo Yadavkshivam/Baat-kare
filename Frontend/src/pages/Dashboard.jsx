@@ -62,7 +62,11 @@ const Dashboard = () => {
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-blue-600">Baat Kare</h1>
+           <Link to="/">
+            <h1 className="text-2xl font-bold text-blue-600 cursor-pointer hover:opacity-80 transition">
+              Baat Kare
+            </h1>
+          </Link>
           <div className="flex items-center gap-4">
             <span className="text-gray-600">
               Hi, <span className="font-semibold">{user?.name}</span>

@@ -5,11 +5,22 @@ import User from '../models/User.js';
 let io;
 
 export const initializeSocket = (server) => {
+  // CORS configuration for deployment
+  const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://localhost:3000',
+    process.env.CLIENT_URL,
+    process.env.FRONTEND_URL,
+  ].filter(Boolean); // Remove undefined values
+
   io = new Server(server, {
     cors: {
-      origin: process.env.CLIENT_URL,
+      origin: allowedOrigins,
       methods: ['GET', 'POST'],
+      credentials: true,
     },
+    transports: ['websocket', 'polling'], // Support both transports
   });
 
   // Socket authentication middleware
